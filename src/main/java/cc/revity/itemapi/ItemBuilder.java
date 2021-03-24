@@ -13,7 +13,8 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Accessors(fluent = true) @Setter
+@Accessors(fluent = true)
+@Setter
 public class ItemBuilder {
 
     private Material material;
@@ -43,7 +44,7 @@ public class ItemBuilder {
 
     /**
      * @param material the {@link Material} to clone
-     * @param amount the amount that the {@link ItemStack} stack size should be
+     * @param amount   the amount that the {@link ItemStack} stack size should be
      * @return the {@link ItemBuilder}
      */
     public static ItemBuilder from(Material material, int amount) {
@@ -52,8 +53,8 @@ public class ItemBuilder {
 
     /**
      * @param material the {@link Material} to clone
-     * @param amount the amount that the {@link ItemStack} stack size should be
-     * @param data the data to set on the {@link ItemStack}
+     * @param amount   the amount that the {@link ItemStack} stack size should be
+     * @param data     the data to set on the {@link ItemStack}
      * @return the {@link ItemBuilder}
      */
     public static ItemBuilder from(Material material, int amount, int data) {
@@ -62,7 +63,7 @@ public class ItemBuilder {
 
     /**
      * @param enchant the {@link Enchantment} to add
-     * @param level the level of the enchantmentt
+     * @param level   the level of the enchantmentt
      * @return the {@link ItemBuilder}
      */
     public ItemBuilder enchant(Enchantment enchant, int level) {
@@ -86,9 +87,13 @@ public class ItemBuilder {
         ItemStack itemStack = base == null ? new ItemStack(material, amount, (short) data) : base;
         ItemMeta itemMeta = Objects.requireNonNull(itemStack.getItemMeta());
         itemMeta.setLore(lore);
-        if (name != null) { itemMeta.setDisplayName(translate(name)); }
+        if (name != null) {
+            itemMeta.setDisplayName(translate(name));
+        }
         if (itemMeta instanceof LeatherArmorMeta && color != null) ((LeatherArmorMeta) itemMeta).setColor(color);
-        for (Map.Entry<Enchantment, Integer> enchant : enchants.entrySet()) itemMeta.addEnchant(enchant.getKey(), enchant.getValue(), true);
+        for (Map.Entry<Enchantment, Integer> enchant : enchants.entrySet()) {
+            itemMeta.addEnchant(enchant.getKey(), enchant.getValue(), true);
+        }
         itemStack.setItemMeta(itemMeta);
         return itemStack;
     }
