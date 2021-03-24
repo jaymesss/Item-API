@@ -1,7 +1,9 @@
 package cc.revity.itemapi;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
@@ -53,5 +55,4 @@ public class ItemAPI {
         Bukkit.getPluginManager().registerEvents(listener, plugin);
         return true;
     }
-
 }
