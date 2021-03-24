@@ -1,6 +1,7 @@
 # Item-API
 Easily make yourself some inventories for players to interact in or just simply view. This API allows you to make inventory creation a lot easier by not having to create a new inventory every time you are in need of creating on. This also covers a lot of annoying edge-cases you have to do every time you work on inventory logics.
 
+We also add an ItemBuilder util to make your life a lot easier, for example using an [Inventory API](https://github.com/RevityDevelopment/Menu-API "MenuAPI Link") updating items.
 # Download
 To setup Item-API usage with maven, put the following in your pom.xml
 
