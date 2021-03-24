@@ -20,5 +20,4 @@ public abstract class ClickableItem {
      * @return the clicking logic of the {@link ClickableItem}
      */
     public abstract boolean onClick(Player player, ItemStack clicked, Action action);
-
 }
