@@ -9,10 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
-    <modules>
-        <module>item-api-common</module>
-    </modules>
-
     <build>
         <plugins>
             <plugin>
@@ -35,14 +31,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <relocations>
-                        <relocation>
-                            <pattern>de.tr7zw.changeme.nbtapi</pattern>
-                            <shadedPattern>cc.revity.vouchers.nbtitem</shadedPattern>
-                        </relocation>
-                    </relocations>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -55,6 +43,13 @@
     </repositories>
 
     <dependencies>
+        <!-- The version of Spigot / Bukkit does not matter on Item-API  -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -62,4 +57,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+
 </project>
