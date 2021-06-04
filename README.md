@@ -10,7 +10,7 @@ To setup Item-API usage with maven, put the following in your pom.xml
     <!-- Add the Item-API repository -->
     <repository>
         <id>item-api-repo</id>
-        <url>https://raw.githubusercontent.com/RevityDevelopment/Item-API/repository/</url>
+        <url>https://raw.githubusercontent.com/jaymesss/Item-API/repository/</url>
     </repository>
 </repositories>
 
@@ -60,7 +60,7 @@ public class ItemAPIPlugin extends JavaPlugin {
     private ExampleItem exampleItem;
 
     public void onEnable() {
-        ItemAPI.setPlugin(this);
+        ItemAPI.register(this);
         ItemAPI.registerItem(exampleItem = new ExampleItem());
     }
 
@@ -71,10 +71,6 @@ public class ItemAPIPlugin extends JavaPlugin {
 
 ```
 
-# Discord
-Like everything you see? Join our Discord to learn about some of our other products:
-* https://discord.gg/EDu33carTe
-
 # Compilation
 Compilation requires the following to be fulfilled:
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html "Java 8 Link")
@@ -83,7 +79,7 @@ Compilation requires the following to be fulfilled:
 # Updates
 This plugin is provided "as is", which means no updates or new features are guaranteed. We will do our best to keep updating and pushing new updates, and you are more than welcome to contribute your time as well and make pull requests for bug fixes.
 
-Once these tasks have been taken care of, compilation via `mvn clean install` will result in `target/menu-api-plugin-1.0.0.jar` being created.
+Once these tasks have been taken care of, compilation via `mvn clean install` will result in `target/item-api-1.0.0.jar` being created.
 
 # License
 This software is available under the following licenses:
