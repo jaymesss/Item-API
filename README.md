@@ -1,7 +1,6 @@
 # Item-API
 Easily make yourself some inventories for players to interact in or just simply view. This API allows you to make inventory creation a lot easier by not having to create a new inventory every time you are in need of creating on. This also covers a lot of annoying edge-cases you have to do every time you work on inventory logics.
 
-We also add an ItemBuilder util to make your life a lot easier, for example using an [Inventory API](https://github.com/RevityDevelopment/Menu-API "MenuAPI Link") updating items.
 # Download
 To setup Item-API usage with maven, put the following in your pom.xml
 
@@ -10,7 +9,7 @@ To setup Item-API usage with maven, put the following in your pom.xml
     <!-- Add the Item-API repository -->
     <repository>
         <id>item-api-repo</id>
-        <url>https://raw.githubusercontent.com/RevityDevelopment/Item-API/repository/</url>
+        <url>https://raw.githubusercontent.com/jaymesss/Item-API/repository/</url>
     </repository>
 </repositories>
 
@@ -37,7 +36,7 @@ public class ExampleItem extends ClickableItem {
 
     @Override
     public ItemStack getItemStack() {
-        return ItemBuilder.from(Material.REDSTONE).name("&bExample").addLore("&aLine one!", "&eLine two!", "&cLine three!").build();
+        return new ItemStack(Material.REDSTONE);
     }
 
     @Override
@@ -47,7 +46,7 @@ public class ExampleItem extends ClickableItem {
             return false;
         }
         player.sendMessage(ChatColor.GREEN + "Diamonds were granted to you!");
-        player.getInventory().addItem(ItemBuilder.from(Material.DIAMOND).amount(16).name("&bDiamonds!").build());
+        player.getInventory().addItem(new ItemStack(Material.DIAMOND, 16));
         this.takeOne(player);
         return false;
     }
@@ -60,7 +59,7 @@ public class ItemAPIPlugin extends JavaPlugin {
     private ExampleItem exampleItem;
 
     public void onEnable() {
-        ItemAPI.setPlugin(this);
+        ItemAPI.register(this);
         ItemAPI.registerItem(exampleItem = new ExampleItem());
     }
 
@@ -71,10 +70,6 @@ public class ItemAPIPlugin extends JavaPlugin {
 
 ```
 
-# Discord
-Like everything you see? Join our Discord to learn about some of our other products:
-* https://discord.gg/EDu33carTe
-
 # Compilation
 Compilation requires the following to be fulfilled:
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html "Java 8 Link")
@@ -83,7 +78,7 @@ Compilation requires the following to be fulfilled:
 # Updates
 This plugin is provided "as is", which means no updates or new features are guaranteed. We will do our best to keep updating and pushing new updates, and you are more than welcome to contribute your time as well and make pull requests for bug fixes.
 
-Once these tasks have been taken care of, compilation via `mvn clean install` will result in `target/menu-api-plugin-1.0.0.jar` being created.
+Once these tasks have been taken care of, compilation via `mvn clean install` will result in `target/item-api-1.0.0.jar` being created.
 
 # License
 This software is available under the following licenses:
