@@ -15,7 +15,7 @@ public class ExampleItem extends ClickableItem {
 
     @Override
     public ItemStack getItemStack() {
-        return ItemBuilder.from(Material.REDSTONE).name("&bExample").addLore("&aLine one!", "&eLine two!", "&cLine three!").build();
+        return new ItemStack(Material.REDSTONE);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ExampleItem extends ClickableItem {
             return false;
         }
         player.sendMessage(ChatColor.GREEN + "Diamonds were granted to you!");
-        player.getInventory().addItem(ItemBuilder.from(Material.DIAMOND).amount(16).name("&bDiamonds!").build());
+        player.getInventory().addItem(new ItemStack(Material.DIAMOND, 16));
         this.takeOne(player);
         return false;
     }
