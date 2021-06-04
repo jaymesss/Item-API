@@ -1,14 +1,9 @@
 package cc.revity.itemapi;
 
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
+import java.util.*;
 
 public class ItemAPI {
 
@@ -23,10 +18,24 @@ public class ItemAPI {
     }
 
     /**
+     * @param item is the {@link ClickableItem...} you're registering
+     */
+    public static void registerItems(ClickableItem... item) {
+        Arrays.stream(item).forEach(i -> items.put(i.getId(), i));
+    }
+
+    /**
      * @param item the {@link ClickableItem} to unregister
      */
     public static void unregisterItem(ClickableItem item) {
         unregisterItem(item.getId());
+    }
+
+    /**
+     * @param item the {@link ClickableItem...} to unregister
+     */
+    public static void unregisterItems(ClickableItem... item) {
+        Arrays.stream(item).map(ClickableItem::getId).forEach(items::remove);
     }
 
     /**
@@ -37,22 +46,25 @@ public class ItemAPI {
     }
 
     /**
-     * @param registering the {@link Plugin} running MenuAPI
+     * @param id the id of the {@link ClickableItem...} to unregister
      */
-    public static void setPlugin(Plugin registering) {
-        plugin = registering;
+    public static void unregisterItems(String... id) {
+        Arrays.stream(id).forEach(items::remove);
     }
 
     /**
-     * @param listener the {@link Listener} containing click logic
-     * @return if the click should be allowed
+     * @return q {@link List} of all of the registered {@link ClickableItem}'s
      */
-    public static boolean registerClickListener(Listener listener) {
-        if (plugin == null) {
-            Bukkit.getLogger().log(Level.SEVERE, "[ItemAPI] You cannot register a click listener without a registering plugin!");
-            return false;
-        }
-        Bukkit.getPluginManager().registerEvents(listener, plugin);
-        return true;
+    public static List<ClickableItem> getItems() {
+        return new ArrayList<>(items.values());
     }
+
+    /**
+     * @param registering the {@link Plugin} running MenuAPI
+     */
+    public static void register(Plugin registering) {
+        plugin = registering;
+        plugin.getServer().getPluginManager().registerEvents(new ClickableListener(), plugin);
+    }
+
 }

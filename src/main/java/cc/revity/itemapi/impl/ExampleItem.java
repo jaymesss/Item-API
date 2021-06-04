@@ -1,7 +1,6 @@
 package cc.revity.itemapi.impl;
 
 import cc.revity.itemapi.ClickableItem;
-import cc.revity.itemapi.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
