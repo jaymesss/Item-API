@@ -53,7 +53,7 @@ public class ItemAPI {
     }
 
     /**
-     * @return q {@link List} of all of the registered {@link ClickableItem}'s
+     * @return a {@link List} of all of the registered {@link ClickableItem}'s
      */
     public static List<ClickableItem> getItems() {
         return new ArrayList<>(items.values());
